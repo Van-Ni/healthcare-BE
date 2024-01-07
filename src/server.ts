@@ -1,4 +1,5 @@
 import express, { Application, Request, Response } from 'express';
+import { DEFAULT } from 'hello/abc';
 
 //#express : typescript
 //https://www.digitalocean.com/community/tutorials/setting-up-a-node-project-with-typescript
@@ -7,7 +8,8 @@ const app : Application = express();
 const port : number = 3000;
 
 app.get('/', (req: Request, res: Response) => {
-  res.send('Hello NiNi!')
+  console.log(DEFAULT);
+  res.send('Hello Ni!')
 });
 
 app.listen(port, () => {
