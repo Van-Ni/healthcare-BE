@@ -1,7 +1,8 @@
-import { CONNECT_DB, GET_DB } from './config/mongodb';
+import { CLOSE_DB, CONNECT_DB, GET_DB } from './config/mongodb';
 import express, { Application, Request, Response } from 'express';
-import { DEFAULT } from 'hello/abc';
-
+import exitHook from 'async-exit-hook';
+import 'dotenv/config'
+import { env } from 'config/enviroment';
 
 const START_SERVER = () => {
   //#express : typescript
@@ -11,7 +12,6 @@ const START_SERVER = () => {
   const port: number = 4100;
 
   app.get('/', (req: Request, res: Response) => {
-    console.log(DEFAULT);
     res.send('Hello Ni!')
   });
 
@@ -19,9 +19,21 @@ const START_SERVER = () => {
     res.send(await GET_DB().listCollections().toArray())
   });
 
-  app.listen(port, () => {
-    console.log(`Hello Ni handsome, Express is listening at http://localhost:${port}`);
+  app.listen(env.APP_PORT, () => {
+    console.log(`Hello Ni handsome, Express is listening at http://localhost:${env.APP_PORT}`);
   });
+
+
+  exitHook(() => {
+    // #mongodb: Doing a cleanup action just before Node.js exits
+    //https://stackoverflow.com/questions/14031763/doing-a-cleanup-action-just-before-node-js-exits
+    // #package: async-exit-hook @types/async-exit-hook
+    // Run some code when the process exits
+    console.log("Server is shutting down");
+    CLOSE_DB();
+    console.log("Disconnected from MongoDB Atlas");
+
+  })
 }
 
 // # js : the Async IIFE
@@ -36,6 +48,7 @@ const START_SERVER = () => {
     START_SERVER();
   } catch (error) {
     console.error(error)
+    // Exit a Process
     process.exit(0);
   }
 

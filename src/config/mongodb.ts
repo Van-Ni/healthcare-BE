@@ -1,12 +1,10 @@
 import { Db, MongoClient, ServerApiVersion } from "mongodb";
-
-const MONGODB_URL = "mongodb+srv://vannidev:1Mqc3hOabanYraXY@cluster0.dkgkhmj.mongodb.net/?retryWrites=true&w=majority";
-const DATABASE_NAME = "TrelloMERN"
+import { env } from "./enviroment";
 
 let trelloDatabaseInstance: Db | null = null;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const mongoClientInstance = new MongoClient(MONGODB_URL, {
+const mongoClientInstance = new MongoClient(env.MONGODB_URL as string, {
     //#mongodb: Stable API
     //https://www.mongodb.com/docs/drivers/node/current/fundamentals/stable-api/
     serverApi: {
@@ -21,10 +19,15 @@ const mongoClientInstance = new MongoClient(MONGODB_URL, {
 export const CONNECT_DB = async () => {
     // Connect the mongoClientInstance to the server (Mongo Atlas)
     await mongoClientInstance.connect();
-
+    
     // Send a ping to confirm a successful connection
-    trelloDatabaseInstance = mongoClientInstance.db(DATABASE_NAME)
+    trelloDatabaseInstance = mongoClientInstance.db(process.env.DATABASE_NAME)
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
+}
+
+export const CLOSE_DB = async () => {
+    console.log("mongoClientInstance close");
+    await mongoClientInstance.close();
 }
 
 // #pattern: reuse instances
