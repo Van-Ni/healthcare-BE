@@ -8,7 +8,8 @@
         "root": ["."],
         "alias": {
           "hello": "./src/hello",
-          "config": "./src/config"
+          "config": "./src/config",
+          "routers": "./src/routers"
         }
       }]
     ]

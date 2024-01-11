@@ -3,13 +3,16 @@ import express, { Application, Request, Response } from 'express';
 import exitHook from 'async-exit-hook';
 import 'dotenv/config'
 import { env } from 'config/enviroment';
+import { API_V1 } from 'routers/v1';
 
 const START_SERVER = () => {
   //#express : typescript
   //https://www.digitalocean.com/community/tutorials/setting-up-a-node-project-with-typescript
   //https://classic.yarnpkg.com/lang/en/docs/cli/init/
   const app: Application = express();
-  const port: number = 4100;
+
+  // Router API : V1
+  app.use('/v1', API_V1)
 
   app.get('/', (req: Request, res: Response) => {
     res.send('Hello Ni!')
