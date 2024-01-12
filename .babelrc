@@ -10,7 +10,8 @@
           "hello": "./src/hello",
           "config": "./src/config",
           "routers": "./src/routers",
-          "validations": "./src/validations"
+          "validations": "./src/validations",
+          "controllers": "./src/controllers"
         }
       }]
     ]

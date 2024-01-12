@@ -19,9 +19,8 @@ const createNew = async (req: Request, res: Response, next: NextFunction) => {
         description: Joi.string().required().min(10).max(256).trim().strict().messages(customMessages),
     });
     try {
-        console.log(req.body);
         await correctCondition.validateAsync(req.body, { abortEarly: false });
-        res.status(StatusCodes.CREATED).send('POST from Validation : /v1/boards');
+        next();
     } catch (error) {
         console.log("error", error);
         // console.log("new Error", new Error(error as string));
