@@ -4,6 +4,7 @@ import exitHook from 'async-exit-hook';
 import 'dotenv/config'
 import { env } from 'config/enviroment';
 import { API_V1 } from 'routers/v1';
+import bodyParser from 'body-parser';
 
 const START_SERVER = () => {
   //#express : typescript
@@ -11,12 +12,16 @@ const START_SERVER = () => {
   //https://classic.yarnpkg.com/lang/en/docs/cli/init/
   const app: Application = express();
 
+  // #package: body-parser
+  // process data sent from the client side (such as form data, JSON data)
+  //parse application/x-www-form-urlencoded
+  app.use(bodyParser.urlencoded({ extended: false }))
+  // parse application/json
+  app.use(bodyParser.json())
+
   // Router API : V1
   app.use('/v1', API_V1)
 
-  app.get('/', (req: Request, res: Response) => {
-    res.send('Hello Ni!')
-  });
 
   app.get('/getDB', async (req: Request, res: Response) => {
     res.send(await GET_DB().listCollections().toArray())

@@ -9,7 +9,8 @@
         "alias": {
           "hello": "./src/hello",
           "config": "./src/config",
-          "routers": "./src/routers"
+          "routers": "./src/routers",
+          "validations": "./src/validations"
         }
       }]
     ]

@@ -1,7 +1,8 @@
-// File: boardRoutes.ts
+// File: boardRoute.ts
 
-import express, { Request, Response, NextFunction } from 'express';
+import express, { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
+import { boardValidation } from 'validations/boardValidation';
 
 const Router = express.Router();
 
@@ -10,8 +11,6 @@ Router.route('/')
   .get((req: Request, res: Response) => {
     res.status(StatusCodes.OK).send('GET /v1/boards');
   })
-  .post((req: Request, res: Response) => {
-    res.status(StatusCodes.CREATED).send('POST /v1/boards');
-  });
+  .post(boardValidation.createNew);
 
-export const boardRoutes = Router;
+export const boardRoute = Router;
