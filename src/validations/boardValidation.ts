@@ -4,7 +4,7 @@
 import Joi from "joi";
 import { NextFunction, Request, Response } from 'express';
 import { StatusCodes } from "http-status-codes";
-import ApiError from "utils/ApiError";
+import ApiError from "../utils/ApiError";
 
 const createNew = async (req: Request, res: Response, next: NextFunction) => {
     const customMessages = {

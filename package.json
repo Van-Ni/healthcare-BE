@@ -2,14 +2,14 @@
   "name": "Trello-BE",
   "version": "1.0.0",
   "description": "vannidev MERN Stack",
-  "main": "src/server.ts",
+  "main": "build/server.js",
   "author": "vannidev",
   "license": "MIT",
   "private": true,
   "scripts": {
     "start:ts": "tsc -w",
     "start:js": "nodemon build/server.js",
-    "start": "concurrently yarn:start:*",
+    "production": "concurrently yarn:start:*",
     "dev": "nodemon --exec babel-node --extensions \".ts\" src/server.ts",
     "lint": "eslint . --ext .ts",
     "build-babel": "babel-node -x .ts -- ./src/server.ts"

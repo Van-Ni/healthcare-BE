@@ -1,9 +1,9 @@
 // File: boardRoute.ts
 
-import { boardController } from 'controllers/boardController';
+import { boardController } from '../../controllers/boardController';
 import express, { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { boardValidation } from 'validations/boardValidation';
+import { boardValidation } from '../../validations/boardValidation';
 
 const Router = express.Router();
 

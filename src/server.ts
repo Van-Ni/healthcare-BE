@@ -2,10 +2,10 @@ import { CLOSE_DB, CONNECT_DB, GET_DB } from './config/mongodb';
 import express, { Application, Request, Response } from 'express';
 import exitHook from 'async-exit-hook';
 import 'dotenv/config'
-import { env } from 'config/enviroment';
-import { API_V1 } from 'routers/v1';
+import { env } from './config/enviroment';
+import { API_V1 } from './routers/v1';
 import bodyParser from 'body-parser';
-import { errorHandlingMiddleware } from 'middlewares/errorHandlingMiddleware';
+import { errorHandlingMiddleware } from './middlewares/errorHandlingMiddleware';
 
 const START_SERVER = () => {
   //#express : typescript

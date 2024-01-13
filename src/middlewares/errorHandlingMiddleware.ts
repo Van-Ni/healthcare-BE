@@ -34,3 +34,7 @@ export const errorHandlingMiddleware = (err: any, req: Request, res: Response, n
   // Trả responseError về phía Front-end
   res.status(responseError.statusCode).json(responseError);
 };
+
+// #express : What is the difference between Development and Production?
+// Chia môi trường dev và production chuẩn ENV từ script
+// Dựa vào biến để xử lý nhiều logic khác nhau.
