@@ -16,8 +16,8 @@ const createNew = async (req: Request, res: Response, next: NextFunction) => {
     };
 
     const correctCondition = Joi.object({
-        title: Joi.string().required().min(10).max(50).trim().strict().messages(customMessages),
-        description: Joi.string().required().min(10).max(256).trim().strict().messages(customMessages),
+        title: Joi.string().required().min(3).max(50).trim().strict().messages(customMessages),
+        description: Joi.string().required().min(3).max(256).trim().strict().messages(customMessages),
     });
     try {
         await correctCondition.validateAsync(req.body, { abortEarly: false });
