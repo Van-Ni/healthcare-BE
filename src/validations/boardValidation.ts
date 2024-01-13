@@ -4,6 +4,7 @@
 import Joi from "joi";
 import { NextFunction, Request, Response } from 'express';
 import { StatusCodes } from "http-status-codes";
+import ApiError from "utils/ApiError";
 
 const createNew = async (req: Request, res: Response, next: NextFunction) => {
     const customMessages = {
@@ -22,9 +23,7 @@ const createNew = async (req: Request, res: Response, next: NextFunction) => {
         await correctCondition.validateAsync(req.body, { abortEarly: false });
         next();
     } catch (error) {
-        console.log("error", error);
-        // console.log("new Error", new Error(error as string));
-        res.status(StatusCodes.UNPROCESSABLE_ENTITY).json({ error: new Error(error as string).message });
+        next(new ApiError(StatusCodes.UNPROCESSABLE_ENTITY, new Error(error as string).message));
     }
 }
 export const boardValidation = {

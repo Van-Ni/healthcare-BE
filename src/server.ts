@@ -5,6 +5,7 @@ import 'dotenv/config'
 import { env } from 'config/enviroment';
 import { API_V1 } from 'routers/v1';
 import bodyParser from 'body-parser';
+import { errorHandlingMiddleware } from 'middlewares/errorHandlingMiddleware';
 
 const START_SERVER = () => {
   //#express : typescript
@@ -22,6 +23,8 @@ const START_SERVER = () => {
   // Router API : V1
   app.use('/v1', API_V1)
 
+  // Error Handling in Express
+  app.use(errorHandlingMiddleware)
 
   app.get('/getDB', async (req: Request, res: Response) => {
     res.send(await GET_DB().listCollections().toArray())
