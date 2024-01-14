@@ -8,7 +8,7 @@ https://duthanhduoc.com/blog/thiet-ke-co-so-du-lieu-voi-mongodb
 ## MongoDB vs Mongoose
 https://www.mongodb.com/developer/languages/javascript/mongoose-versus-nodejs-driver/#populate-and-lookup
 ## Mongoose vs MongoDB Node.js Driver: A Comparison
-
+<!-- https://duthanhduoc.com/blog/so-sanh-mongoose-vs-mongodb-driver -->
 ## Populate and Lookup
 
 
