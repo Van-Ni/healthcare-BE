@@ -1,4 +1,5 @@
 import { CLOSE_DB, CONNECT_DB, GET_DB } from './config/mongodb';
+import { corsOptions } from './config/cors';
 import express, { Application, Request, Response } from 'express';
 import exitHook from 'async-exit-hook';
 import 'dotenv/config'
@@ -6,6 +7,8 @@ import { env } from './config/enviroment';
 import { API_V1 } from './routers/v1';
 import bodyParser from 'body-parser';
 import { errorHandlingMiddleware } from './middlewares/errorHandlingMiddleware';
+import cors from 'cors';
+
 
 const START_SERVER = () => {
   //#express : typescript
@@ -13,6 +16,8 @@ const START_SERVER = () => {
   //https://classic.yarnpkg.com/lang/en/docs/cli/init/
   const app: Application = express();
 
+  app.use(cors(corsOptions))
+  
   // #package: body-parser
   // process data sent from the client side (such as form data, JSON data)
   //parse application/x-www-form-urlencoded
@@ -65,6 +70,8 @@ const START_SERVER = () => {
 
 
 })();
+
+
 
 // CONNECT_DB()
 //   .then(() => console.log('Connected to MongoDB Cloud Atlas'))
