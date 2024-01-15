@@ -47,10 +47,21 @@ const findBoardById = async (boardId: ObjectId) => {
         throw new Error(error as string);
     }
 };
+
+const getDetails = async (boardId: ObjectId) => {
+    try {
+        // console.log(boardId, typeof boardId);
+        const foundBoard = await GET_DB().collection(BOARD_COLLECTION_NAME).findOne({ _id: boardId });
+        return foundBoard;
+    } catch (error) {
+        throw new Error(error as string);
+    }
+};
 export const boardModel = {
     BOARD_COLLECTION_NAME,
     BOARD_COLLECTION_SCHEMA,
     createNew,
-    findBoardById
+    findBoardById,
+    getDetails
 }
 

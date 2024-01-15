@@ -1,6 +1,7 @@
 import { slugify } from "../utils/formatters";
 
 import { boardModel } from "../models/boardModel"
+import { ObjectId } from "mongodb";
 const createNew = async (boardData: any) => {
     try {
         const newBoard: any = {
@@ -14,6 +15,15 @@ const createNew = async (boardData: any) => {
         throw error;
     }
 }
+const getDetails = async (id: ObjectId) => {
+    try {
+      const board = await boardModel.getDetails(id);
+      return board;
+    } catch (error) {
+      throw error;
+    }
+  };
 export const boardService = {
-    createNew
+    createNew,
+    getDetails
 }

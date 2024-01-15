@@ -14,4 +14,14 @@ Router.route('/')
   })
   .post(boardValidation.createNew, boardController.createNew);
 
+Router.route('/:id')
+  .get(boardController.getDetails)
+  .put((req: Request, res: Response) => {
+    const id = req.params.id;
+    res.status(StatusCodes.OK).send(`PUT /v1/boards/${id}`);
+  })
+  .delete((req: Request, res: Response) => {
+    const id = req.params.id;
+    res.status(StatusCodes.OK).send(`DELETE /v1/boards/${id}`);
+  });
 export const boardRoute = Router;
