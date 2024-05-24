@@ -1,4 +1,4 @@
-import { CLOSE_DB, CONNECT_DB, GET_DB } from './config/mongodb';
+import { CLOSE_DB, GET_DB } from './config/mongodb';
 import { corsOptions } from './config/cors';
 import express, { Application, Request, Response } from 'express';
 import exitHook from 'async-exit-hook';
@@ -59,8 +59,7 @@ const START_SERVER = () => {
     /** # START SERVER #
     * Only when the database connection is successful will the server start
     */
-    await CONNECT_DB()
-    console.log('Connected to MongoDB Cloud Atlas')
+    
     START_SERVER();
   } catch (error) {
     console.error(error)
