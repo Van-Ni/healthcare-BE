@@ -1,6 +1,5 @@
-import { CLOSE_DB, GET_DB } from './config/mongodb';
 import { corsOptions } from './config/cors';
-import express, { Application, Request, Response } from 'express';
+import express, { Application } from 'express';
 import exitHook from 'async-exit-hook';
 import 'dotenv/config'
 import { env } from './config/enviroment';
@@ -31,10 +30,6 @@ const START_SERVER = () => {
   // Error Handling in Express
   app.use(errorHandlingMiddleware)
 
-  app.get('/getDB', async (req: Request, res: Response) => {
-    res.send(await GET_DB().listCollections().toArray())
-  });
-
   app.listen(env.APP_PORT, () => {
     console.log(`Hello Ni handsome, Express is listening at http://localhost:${env.APP_PORT}`);
   });
@@ -46,8 +41,6 @@ const START_SERVER = () => {
     // #package: async-exit-hook @types/async-exit-hook
     // Run some code when the process exits
     console.log("Server is shutting down");
-    CLOSE_DB();
-    console.log("Disconnected from MongoDB Atlas");
 
   })
 }

@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  db:
+    container_name: db  
+    image: mysql:8.0  
+    restart: unless-stopped  
+    environment:
+      MYSQL_DATABASE: healthcare  
+      MYSQL_ROOT_PASSWORD: 123321 
+    ports:
+      - '3306:3306'  
+    volumes:
+      - mysqldata:/var/lib/mysql  # Persistent data volume
+
+volumes:
+  mysqldata:
+  # docker compose -p healthcare up -d
