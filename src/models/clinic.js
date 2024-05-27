@@ -1,10 +1,9 @@
 'use strict';
 const {
   Model
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class User extends Model {
+  class Clinic extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -14,17 +13,13 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  User.init({
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
+  Clinic.init({
     address: DataTypes.STRING,
-    gender: DataTypes.BOOLEAN,
-    roleId: DataTypes.INTEGER,
+    description: DataTypes.TEXT,
+    image: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'User',
+    modelName: 'Clinic',
   });
-  return User;
+  return Clinic;
 };
