@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use strict';
 
 /** @type {import('sequelize-cli').Migration} */
@@ -5,9 +6,14 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Users', [
       {
-        firstName: 'John',
-        lastName: 'Doe',
-        email: 'example@example.com',
+        firstName: 'Van',
+        lastName: 'Ni',
+        email: 'admin@gmail.com',
+        password: "vannidev",
+        address: "Quy Nhon",
+        gender: 1,
+        typeRole: "ROLE",
+        keyRole: "R1",
         createdAt: new Date(),
         updatedAt: new Date(),
       },

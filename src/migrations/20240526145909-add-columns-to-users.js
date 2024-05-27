@@ -11,15 +11,19 @@ module.exports = {
      */
     await queryInterface.addColumn('Users', 'address', {
       type: Sequelize.STRING,
-      allowNull: false, // Set to false if you want this field to be required
+      allowNull: false, 
     });
     await queryInterface.addColumn('Users', 'gender', {
       type: Sequelize.BOOLEAN,
-      allowNull: false, // Set to false if you want this field to be required
+      allowNull: false, 
     });
-    await queryInterface.addColumn('Users', 'roleId', {
-      type: Sequelize.INTEGER,
-      allowNull: false, // Set to false if you want this field to be required
+    await queryInterface.addColumn('Users', 'typeRole', {
+      type: Sequelize.STRING,
+      allowNull: false, 
+    });
+    await queryInterface.addColumn('Users', 'keyRole', {
+      type: Sequelize.STRING,
+      allowNull: false, 
     });
   },
 
@@ -32,6 +36,7 @@ module.exports = {
      */
     await queryInterface.removeColumn('Users', 'address');
     await queryInterface.removeColumn('Users', 'gender');
-    await queryInterface.removeColumn('Users', 'roleId');
+    await queryInterface.removeColumn('Users', 'typeRole');
+    await queryInterface.removeColumn('Users', 'keyRole');
   }
 };
