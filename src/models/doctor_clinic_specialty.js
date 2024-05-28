@@ -19,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     specialtyId: DataTypes.INTEGER,
   }, {
     sequelize,
+    paranoid: true,
     modelName: 'Doctor_clinic_specialty',
   });
   return Doctor_clinic_specialty;

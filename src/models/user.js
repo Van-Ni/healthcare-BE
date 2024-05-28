@@ -27,6 +27,8 @@ module.exports = (sequelize, DataTypes) => {
     image: DataTypes.INTEGER,
   }, {
     sequelize,
+    // #sequelize paranoid: https://sequelize.org/docs/v6/core-concepts/paranoid/
+    paranoid: true,
     modelName: 'User',
   });
   return User;

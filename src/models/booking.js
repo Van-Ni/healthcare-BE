@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     timeType: DataTypes.STRING
   }, {
     sequelize,
+    paranoid: true,
     modelName: 'Booking',
   });
   return Booking;
