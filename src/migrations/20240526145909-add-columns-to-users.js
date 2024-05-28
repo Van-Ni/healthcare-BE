@@ -17,13 +17,19 @@ module.exports = {
       type: Sequelize.BOOLEAN,
       allowNull: false, 
     });
-    await queryInterface.addColumn('Users', 'typeRole', {
-      type: Sequelize.STRING,
+    await queryInterface.addColumn('Users', 'roleId', {
+      type: Sequelize.INTEGER,
       allowNull: false, 
     });
-    await queryInterface.addColumn('Users', 'keyRole', {
+    await queryInterface.addColumn('Users', 'phonenumber', {
       type: Sequelize.STRING,
+    });
+    await queryInterface.addColumn('Users', 'positionId', {
+      type: Sequelize.INTEGER,
       allowNull: false, 
+    });
+    await queryInterface.addColumn('Users', 'image', {
+      type: Sequelize.STRING,
     });
   },
 
@@ -36,7 +42,9 @@ module.exports = {
      */
     await queryInterface.removeColumn('Users', 'address');
     await queryInterface.removeColumn('Users', 'gender');
-    await queryInterface.removeColumn('Users', 'typeRole');
-    await queryInterface.removeColumn('Users', 'keyRole');
+    await queryInterface.removeColumn('Users', 'roleId');
+    await queryInterface.removeColumn('Users', 'phonenumber');
+    await queryInterface.removeColumn('Users', 'positionId');
+    await queryInterface.removeColumn('Users', 'image');
   }
 };
